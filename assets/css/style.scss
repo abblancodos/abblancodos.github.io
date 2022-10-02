@@ -13,18 +13,47 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
 /* append your custom style below */
 
+html {
+  @media (prefers-color-scheme: light) {
+    &:not([data-mode]),
+    &[data-mode=light] {
+      @include light-scheme;
+      --bgimage: url("ppatron.png");
+    }
+
+    &[data-mode=dark] {
+      @include dark-scheme;
+      --bgimage: url("swashdark.png");
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:not([data-mode]),
+    &[data-mode=dark] {
+      @include dark-scheme;
+    }
+
+    &[data-mode=light] {
+      @include light-scheme;
+    }
+  }
+
+  font-size: 16px;
+}
+
 #post pl-1 pr-1 pl-md-2 pr-md-2{
     font-size: 100px;
 }
 
-#sidebar {
-    
-    background-color: var(sidebar-bg);
-    background-image: url("ppatron.png");
-    background-repeat: repeat;
 
-    .site-title a{
+#sidebar {
+  background-color: var(sidebar-bg);
+  background-image: var(--bgimage);
+  background-repeat: repeat;
+  
+  .site-title a{
     font-family: Commissioner;
     margin-right: 100px;
     }
 }
+
