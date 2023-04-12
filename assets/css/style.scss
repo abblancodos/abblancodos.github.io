@@ -31,10 +31,12 @@ html {
     &:not([data-mode]),
     &[data-mode=dark] {
       @include dark-scheme;
+      --bgimage: url("swashdark.png");
     }
 
     &[data-mode=light] {
       @include light-scheme;
+      --bgimage: url("ppatron.png");
     }
   }
 
